@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SabiStack — Automation Blueprints by Joseph Agbabiaka</title>
+<meta name="description" content="Production-ready n8n automation blueprints by Joseph Agbabiaka — Digital Systems Architect based in Lagos, Nigeria. Zero-bloat lead enrichment, API integration, and workflow automation infrastructure, built and run in production.">
+<meta name="keywords" content="n8n automation, workflow automation, lead enrichment, API integration, business automation blueprints, SabiStack">
+<meta name="author" content="Joseph Agbabiaka">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="SabiStack — Automation Blueprints by Joseph Agbabiaka">
+<meta property="og:description" content="Production-ready n8n automation blueprints. Zero-bloat lead enrichment, API integration, and workflow automation infrastructure, built and run in production.">
+<meta property="og:image" content="https://trysabistack.com/og-image.png">
+<meta property="og:url" content="https://trysabistack.com">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SabiStack — Automation Blueprints by Joseph Agbabiaka">
+<meta name="twitter:description" content="Production-ready n8n automation blueprints. Zero-bloat lead enrichment, API integration, and workflow automation infrastructure, built and run in production.">
+<meta name="twitter:image" content="https://trysabistack.com/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://gumroad.com/js/gumroad.js"></script>
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --mint:    #00D9A6;
+    --orange:  #FF6B2B;
+    --mint-dim: rgba(0,217,166,0.12);
+    --orange-dim: rgba(255,107,43,0.12);
+  }
+  [data-theme="dark"] {
+    --bg:      #0D1117;
+    --bg2:     #161B22;
+    --bg3:     #1E2530;
+    --border:  rgba(255,255,255,0.07);
+    --text:    #E8EDF2;
+    --muted:   #8B95A2;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.3);
+  }
+  [data-theme="light"] {
+    --bg:      #F0F4F8;
+    --bg2:     #FFFFFF;
+    --bg3:     #E8EDF5;
+    --border:  rgba(0,0,0,0.08);
+    --text:    #1A1A2E;
+    --muted:   #5A6478;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  /* ── RESET ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    height: 64px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .nav-logo span { color: var(--mint); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .nav-link {
+    font-size: 0.875rem; font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--text); }
+  .theme-toggle {
+    width: 36px; height: 36px; border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    color: var(--muted);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; transition: all 0.2s;
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--mint); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px clamp(1.5rem, 5vw, 4rem) 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; font-weight: 500;
+    color: var(--mint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 24px; height: 1px; background: var(--mint);
+  }
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--mint);
+  }
+  .hero-title .accent-orange {
+    color: var(--orange);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 460px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--mint);
+    color: #0D1117;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 0.9rem;
+    transition: all 0.2s;
+    box-shadow: 0 0 0 0 rgba(0,217,166,0.4);
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0,217,166,0.35);
+  }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500; font-size: 0.9rem;
+    background: var(--bg2);
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--mint); color: var(--mint); }
+
+  /* ── WORKFLOW ANIMATION ── */
+  .workflow-canvas {
+    position: relative;
+    width: 100%; aspect-ratio: 1;
+    max-width: 480px;
+    margin-left: auto;
+  }
+  .wf-bg {
+    position: absolute; inset: 0;
+    border-radius: 20px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .wf-grid {
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.5;
+  }
+  .wf-header {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 36px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; padding: 0 1rem; gap: 0.5rem;
+  }
+  .wf-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .wf-dot.red { background: #FF5F57; }
+  .wf-dot.yellow { background: #FFBD2E; }
+  .wf-dot.green { background: #28CA41; }
+  .wf-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; color: var(--muted);
+    margin-left: auto;
+  }
+
+  /* Nodes */
+  .wf-nodes {
+    position: absolute;
+    top: 52px; left: 20px; right: 20px; bottom: 20px;
+    display: flex; flex-direction: column;
+    justify-content: space-around;
+    padding: 8px 0;
+  }
+  .wf-row {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .wf-node {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    flex: 1;
+    position: relative;
+    opacity: 0.4;
+    transform: scale(0.97);
+    transition: opacity 0.4s, transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+  }
+  .wf-node.firing {
+    opacity: 1;
+    transform: scale(1);
+    border-color: var(--mint);
+    box-shadow: 0 0 12px rgba(0,217,166,0.25);
+  }
+  .wf-node.done {
+    opacity: 0.85;
+    transform: scale(1);
+    border-color: rgba(0,217,166,0.4);
+  }
+  .wf-node.error {
+    border-color: var(--orange);
+    box-shadow: 0 0 12px rgba(255,107,43,0.25);
+    opacity: 1; transform: scale(1);
+  }
+  .node-icon {
+    width: 28px; height: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; flex-shrink: 0;
+    background: var(--mint-dim);
+  }
+  .node-icon.orange-bg { background: var(--orange-dim); }
+  .node-info { flex: 1; min-width: 0; }
+  .node-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; font-weight: 500;
+    color: var(--text);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .node-status {
+    font-size: 0.6rem; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .node-check {
+    font-size: 0.75rem; color: var(--mint);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .wf-node.done .node-check { opacity: 1; }
+  .wf-connector {
+    width: 2px; height: 14px;
+    background: var(--border);
+    margin: 0 auto;
+    transition: background 0.4s;
+    position: relative;
+  }
+  .wf-connector.active { background: var(--mint); }
+  .wf-connector.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 6px; height: 6px;
+    border-right: 2px solid var(--mint);
+    border-bottom: 2px solid var(--mint);
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  /* Stats bar */
+  .wf-stats {
+    position: absolute; bottom: 20px; left: 20px; right: 20px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex; gap: 16px;
+  }
+  .stat-item { display: flex; flex-direction: column; gap: 1px; }
+  .stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; font-weight: 500;
+    color: var(--mint);
+  }
+  .stat-lbl {
+    font-size: 0.6rem; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 80px clamp(1.5rem, 5vw, 4rem);
+  }
+  .section-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 500;
+    color: var(--orange);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    color: var(--muted);
+    max-width: 540px;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ── PRODUCTS ── */
+  .products-section { background: var(--bg); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .product-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    cursor: pointer;
+    display: block;
+  }
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow);
+    border-color: var(--mint);
+  }
+  .card-thumb {
+    height: 160px;
+    background: var(--bg3);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-thumb-icon {
+    font-size: 3rem; opacity: 0.6;
+  }
+  .card-thumb-badge {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--mint);
+    color: #0D1117;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 99px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .card-thumb-badge.orange {
+    background: var(--orange);
+  }
+  .card-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; color: var(--mint);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem; font-weight: 600;
+    margin-bottom: 0.5rem; line-height: 1.3;
+  }
+  .card-desc {
+    font-size: 0.875rem; color: var(--muted);
+    line-height: 1.6; margin-bottom: 1.25rem;
+  }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-price {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
+  }
+  .card-link {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--mint);
+    display: flex; align-items: center; gap: 0.35rem;
+    transition: gap 0.2s;
+  }
+  .card-link:hover { gap: 0.6rem; }
+
+  /* ── STACK ── */
+  .stack-section { background: var(--bg2); }
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .stack-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .stack-item:hover { border-color: var(--mint); transform: translateY(-2px); }
+  .stack-icon { font-size: 1.5rem; }
+  .stack-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 0.9rem;
+  }
+  .stack-role { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── ABOUT ── */
+  .about-section { background: var(--bg); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .about-text .section-desc { margin-bottom: 1.5rem; }
+  .about-stat-row {
+    display: flex; gap: 2rem; margin-top: 2rem;
+  }
+  .about-stat { display: flex; flex-direction: column; gap: 0.25rem; }
+  .about-stat-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--mint);
+    line-height: 1;
+  }
+  .about-stat-lbl { font-size: 0.8rem; color: var(--muted); }
+  .about-pills {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem;
+  }
+  .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .pill:hover { border-color: var(--mint); color: var(--mint); }
+  .about-visual {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+  .terminal-bar {
+    display: flex; align-items: center; gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .terminal-body {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 2;
+    color: var(--muted);
+  }
+  .t-line { display: flex; gap: 0.75rem; }
+  .t-prompt { color: var(--mint); flex-shrink: 0; }
+  .t-cmd { color: var(--text); }
+  .t-comment { color: var(--muted); opacity: 0.6; }
+  .t-output { color: var(--mint); padding-left: 1.25rem; }
+  .t-orange { color: var(--orange); }
+
+  /* ── EMAIL FOLLOW ── */
+  .follow-section {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .follow-inner {
+    max-width: 640px; margin: 0 auto; text-align: center;
+  }
+  .follow-inner .section-title { margin-bottom: 0.75rem; }
+  .follow-inner .section-desc { margin: 0 auto 2rem; }
+  form[data-gumroad-follow] {
+    display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;
+  }
+  form[data-gumroad-follow] input[type="email"] {
+    flex: 1; min-width: 240px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  form[data-gumroad-follow] input[type="email"]:focus {
+    border-color: var(--mint);
+  }
+  form[data-gumroad-follow] input[type="email"]::placeholder { color: var(--muted); }
+  form[data-gumroad-follow] button {
+    background: var(--mint);
+    color: #0D1117;
+    border: none; border-radius: 8px;
+    padding: 0.75rem 1.75rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  form[data-gumroad-follow] button:hover {
+    box-shadow: 0 4px 20px rgba(0,217,166,0.35);
+    transform: translateY(-1px);
+  }
+  [data-gumroad-follow-message] {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--mint);
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 1.4em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 0.95rem;
+  }
+  .footer-brand span { color: var(--mint); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-link {
+    font-size: 0.8rem; color: var(--muted);
+    transition: color 0.2s;
+  }
+  .footer-link:hover { color: var(--mint); }
+  .footer-copy { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── AMBIENT BG ── */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,217,166,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,107,43,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .workflow-canvas { max-width: 100%; margin: 0; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { display: none; }
+    nav .nav-link { display: none; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Sabi<span>Stack</span></div>
+  <div class="nav-right">
+    <a href="#products" class="nav-link">Blueprints</a>
+    <a href="#stack" class="nav-link">Stack</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#follow" class="nav-link">Follow</a>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-eyebrow">SabiStack · Automation Blueprints</div>
+      <h1 class="hero-title">
+        Build pipelines that run<br>
+        while you <em>sleep.</em>
+      </h1>
+      <p class="hero-desc">
+        Production-ready automation blueprints engineered by Joseph Agbabiaka — Digital Systems Architect based in Lagos. Zero bloat. Zero manual overhead. Just clean, sovereign infrastructure that works.
+      </p>
+      <div class="hero-cta">
+        <a href="#products" class="btn-primary">
+          Browse Blueprints →
+        </a>
+        <a href="https://debayour01.gumroad.com" target="_blank" class="btn-ghost">
+          Gumroad Store ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- ANIMATED WORKFLOW -->
+    <div class="workflow-canvas">
+      <div class="wf-bg">
+        <div class="wf-grid"></div>
+        <div class="wf-header">
+          <div class="wf-dot red"></div>
+          <div class="wf-dot yellow"></div>
+          <div class="wf-dot green"></div>
+          <span class="wf-label">sovereign-lead-engine · execution #1</span>
+        </div>
+        <div class="wf-nodes" id="wfNodes">
+          <div class="wf-row">
+            <div class="wf-node" id="n1">
+              <div class="node-icon">⚡</div>
+              <div class="node-info">
+                <div class="node-name">Webhook Trigger</div>
+                <div class="node-status" id="s1">waiting...</div>
+              </div>
+              <div class="node-check">✓</div>
+            </div>
+          </div>
+          <div class="wf-connector" id="c1"></div>
+          <div class="wf-row">
+            <div class="wf-node" id="n2">
+              <div class="node-icon">🔍</div>
+              <div class="node-info">
+                <div class="node-name">DeFiLlama · filter TVL</div>
+                <div class="node-status" id="s2">idle</div>
+              </div>
+              <div class="node-check">✓</div>
+            </div>
+          </div>
+          <div class="wf-connector" id="c2"></div>
+          <div class="wf-row">
+            <div class="wf-node" id="n3">
+              <div class="node-icon orange-bg">🔄</div>
+              <div class="node-info">
+                <div class="node-name">Deduplication check</div>
+                <div class="node-status" id="s3">idle</div>
+              </div>
+              <div class="node-check">✓</div>
+            </div>
+          </div>
+          <div class="wf-connector" id="c3"></div>
+          <div class="wf-row">
+            <div class="wf-node" id="n4">
+              <div class="node-icon">💧</div>
+              <div class="node-info">
+                <div class="node-name">Waterfall enrichment</div>
+                <div class="node-status" id="s4">idle</div>
+              </div>
+              <div class="node-check">✓</div>
+            </div>
+          </div>
+          <div class="wf-connector" id="c4"></div>
+          <div class="wf-row">
+            <div class="wf-node" id="n5">
+              <div class="node-icon">📊</div>
+              <div class="node-info">
+                <div class="node-name">Write to destination</div>
+                <div class="node-status" id="s5">idle</div>
+              </div>
+              <div class="node-check">✓</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="section-inner">
+    <div class="section-eyebrow">// blueprints</div>
+    <h2 class="section-title">Ready-to-deploy automation</h2>
+    <p class="section-desc">Each blueprint ships with the workflow JSON, a setup guide, and configuration files — install, connect your credentials, and run. One is live; more are in active development.</p>
+
+    <div class="products-grid">
+
+      <!-- Product 1 -->
+      <a class="product-card gumroad-button" href="https://debayour01.gumroad.com/l/sovereign-lead-engine">
+        <div class="card-thumb">
+          <div class="card-thumb-icon">⚡</div>
+          <div class="card-thumb-badge">Flagship</div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">n8n · Clay · DeFiLlama</div>
+          <div class="card-title">Sovereign Lead Enrichment Engine</div>
+          <p class="card-desc">A zero-bloat lead pipeline: pulls prospects from DeFiLlama, deduplicates, and runs waterfall enrichment across Hunter → Apollo → Prospeo to deliver clean, ready-to-use output. Fully autonomous — no manual list-cleaning required.</p>
+          <div class="card-footer">
+            <div class="card-price">View Blueprint</div>
+            <div class="card-link">Get it →</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Product 2 — placeholder for future product -->
+      <a class="product-card" href="https://debayour01.gumroad.com" target="_blank">
+        <div class="card-thumb">
+          <div class="card-thumb-icon">🔗</div>
+          <div class="card-thumb-badge orange">Coming Soon</div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">n8n · Webhook · API</div>
+          <div class="card-title">API Integration Starter Kit</div>
+          <p class="card-desc">Pre-wired n8n templates for common business API integrations — authentication, pagination, error handling, and rate limiting built in from day one.</p>
+          <div class="card-footer">
+            <div class="card-price">In Development</div>
+            <div class="card-link">See storefront →</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Product 3 -->
+      <a class="product-card" href="https://debayour01.gumroad.com" target="_blank">
+        <div class="card-thumb">
+          <div class="card-thumb-icon">📊</div>
+          <div class="card-thumb-badge orange">Coming Soon</div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">GTM · GA4 · Server-side</div>
+          <div class="card-title">Conversion Tracking Blueprint</div>
+          <p class="card-desc">Production-ready GTM container setup with GA4 event tracking, conversion attribution, and server-side configuration. No more blind spots in your funnel data.</p>
+          <div class="card-footer">
+            <div class="card-price">In Development</div>
+            <div class="card-link">See storefront →</div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="stack-section" id="stack">
+  <div class="section-inner">
+    <div class="section-eyebrow">// tech stack</div>
+    <h2 class="section-title">Built with tools that ship</h2>
+    <p class="section-desc">Every blueprint is built on production-grade tooling. No SaaS lock-in. No black boxes. Full control over your infrastructure.</p>
+    <div class="stack-grid">
+      <div class="stack-item"><div class="stack-icon">🔄</div><div class="stack-name">n8n</div><div class="stack-role">Workflow orchestration</div></div>
+      <div class="stack-item"><div class="stack-icon">🧪</div><div class="stack-name">Clay</div><div class="stack-role">Lead enrichment</div></div>
+      <div class="stack-item"><div class="stack-icon">📡</div><div class="stack-name">DeFiLlama</div><div class="stack-role">Protocol data source</div></div>
+      <div class="stack-item"><div class="stack-icon">🔍</div><div class="stack-name">Hunter.io</div><div class="stack-role">Email discovery</div></div>
+      <div class="stack-item"><div class="stack-icon">🚀</div><div class="stack-name">Apollo</div><div class="stack-role">Contact enrichment</div></div>
+      <div class="stack-item"><div class="stack-icon">🎯</div><div class="stack-name">Google GTM</div><div class="stack-role">Tracking infrastructure</div></div>
+      <div class="stack-item"><div class="stack-icon">📈</div><div class="stack-name">GA4</div><div class="stack-role">Analytics & attribution</div></div>
+      <div class="stack-item"><div class="stack-icon">🗄️</div><div class="stack-name">Google Sheets</div><div class="stack-role">Output destination</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-eyebrow">// about</div>
+        <h2 class="section-title">I build what I sell.</h2>
+        <p class="section-desc">
+          I'm Joseph Agbabiaka — Digital Systems Architect and Workflow Automation Specialist based in Lagos, Nigeria. Every blueprint I publish is infrastructure I've built and run in production. No theory. No demos. Just working systems.
+        </p>
+        <p class="section-desc">
+          I specialize in decoupling business operations from manual overhead — building autonomous pipelines that handle lead generation, data enrichment, conversion tracking, and outreach without human intervention at each step.
+        </p>
+        <div class="about-pills">
+          <span class="pill">workflow architecture</span>
+          <span class="pill">API integration</span>
+          <span class="pill">lead enrichment</span>
+          <span class="pill">GTM / GA4</span>
+          <span class="pill">n8n</span>
+          <span class="pill">AI evaluation</span>
+          <span class="pill">process automation</span>
+          <span class="pill">Lagos · Nigeria</span>
+        </div>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <div class="about-stat-val">2+</div>
+            <div class="about-stat-lbl">Years automating</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-val">0</div>
+            <div class="about-stat-lbl">Manual steps in pipeline</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-val">∞</div>
+            <div class="about-stat-lbl">Scale ceiling</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="terminal-bar">
+          <div class="t-dot" style="background:#FF5F57"></div>
+          <div class="t-dot" style="background:#FFBD2E"></div>
+          <div class="t-dot" style="background:#28CA41"></div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">node pipeline.js --env prod</span></div>
+          <div class="t-line"><span class="t-output">✓ Webhook trigger registered</span></div>
+          <div class="t-line"><span class="t-output">✓ DeFiLlama filter: TVL > $10M</span></div>
+          <div class="t-line"><span class="t-output">✓ Dedup check: 14 skipped</span></div>
+          <div class="t-line"><span class="t-output">✓ Hunter: 38 verified emails</span></div>
+          <div class="t-line"><span class="t-output">✓ Apollo fallback: 9 found</span></div>
+          <div class="t-line"><span class="t-orange">→ Writing 47 records to sheet...</span></div>
+          <div class="t-line"><span class="t-output">✓ Pipeline complete. 0 errors.</span></div>
+          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd t-comment">█</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL FOLLOW -->
+<section class="follow-section" id="follow">
+  <div class="section-inner">
+    <div class="follow-inner">
+      <div class="section-eyebrow">// stay in the loop</div>
+      <h2 class="section-title">Get new blueprints first.</h2>
+      <p class="section-desc">Join the list. When a new workflow drops — enrichment engine, tracking setup, outreach pipeline — you hear about it before anyone else.</p>
+      <form data-gumroad-follow="debayour01">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Follow SabiStack</button>
+      </form>
+      <p data-gumroad-follow-message="">✓ You're on the list. New blueprints come to you first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Sabi<span>Stack</span> · @debayour01</div>
+  <div class="footer-links">
+    <a href="https://debayour01.gumroad.com" target="_blank" class="footer-link">Gumroad Store</a>
+    <a href="https://twitter.com/debayour01" target="_blank" class="footer-link">X / Twitter</a>
+    <a href="https://linkedin.com/in/joseph-a-870ba83a3" target="_blank" class="footer-link">LinkedIn</a>
+    <a href="#products" class="footer-link">Blueprints</a>
+  </div>
+  <div class="footer-copy">© 2026 SabiStack · Lagos, Nigeria</div>
+</footer>
+
+<script>
+  // ── THEME TOGGLE ──
+  const btn = document.getElementById('themeBtn');
+  const html = document.documentElement;
+  btn.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    btn.textContent = isDark ? '🌙' : '☀️';
+  });
+
+  // ── WORKFLOW ANIMATION ──
+  const nodes = [
+    { node: 'n1', conn: 'c1', status: 's1', label: 'firing...', done: '12 records in' },
+    { node: 'n2', conn: 'c2', status: 's2', label: 'filtering TVL...', done: '47 protocols matched' },
+    { node: 'n3', conn: 'c3', status: 's3', label: 'checking dupes...', done: '14 skipped' },
+    { node: 'n4', conn: 'c4', status: 's4', label: 'enriching...', done: '47 emails found' },
+    { node: 'n5', conn: null, status: 's5', label: 'writing output...', done: '47 rows written ✓' },
+  ];
+
+  function runAnimation() {
+    // Reset
+    nodes.forEach(({ node, conn, status }) => {
+      const n = document.getElementById(node);
+      const s = document.getElementById(status);
+      const c = conn ? document.getElementById(conn) : null;
+      n.classList.remove('firing', 'done', 'error');
+      s.textContent = 'idle';
+      if (c) c.classList.remove('active');
+    });
+
+    let delay = 600;
+    nodes.forEach(({ node, conn, status, label, done }, i) => {
+      // Fire node
+      setTimeout(() => {
+        const n = document.getElementById(node);
+        const s = document.getElementById(status);
+        n.classList.add('firing');
+        s.textContent = label;
+      }, delay);
+      delay += 900;
+
+      // Complete node
+      setTimeout(() => {
+        const n = document.getElementById(node);
+        const s = document.getElementById(status);
+        const c = conn ? document.getElementById(conn) : null;
+        n.classList.remove('firing');
+        n.classList.add('done');
+        s.textContent = done;
+        if (c) c.classList.add('active');
+      }, delay);
+      delay += 400;
+    });
+
+    // Restart after pause
+    setTimeout(runAnimation, delay + 3000);
+  }
+
+  // Start after brief delay
+  setTimeout(runAnimation, 1200);
+
+  // ── SMOOTH SCROLL ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
