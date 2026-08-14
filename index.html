@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SabiStack — Automation Blueprints by Joseph Agbabiaka</title>
-<meta name="description" content="Production-ready n8n automation blueprints by Joseph Agbabiaka — Digital Systems Architect based in Lagos, Nigeria. Zero-bloat lead enrichment, API integration, and workflow automation infrastructure, built and run in production.">
+<meta name="description" content="Production-ready n8n automation blueprints by Joseph Agbabiaka — Digital Systems Architect in Lagos, Nigeria.">
 <meta name="keywords" content="n8n automation, workflow automation, lead enrichment, API integration, business automation blueprints, SabiStack">
 <meta name="author" content="Joseph Agbabiaka">
+<meta name="theme-color" content="#0D1117" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F0F4F8" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230D1117'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='700' fill='%2300D9A6' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -64,6 +67,11 @@
   }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
 
   /* ── NAV ── */
   nav {
@@ -91,7 +99,7 @@
   }
   .nav-link:hover { color: var(--text); }
   .theme-toggle {
-    width: 36px; height: 36px; border-radius: 8px;
+    width: 44px; height: 44px; border-radius: 8px;
     border: 1px solid var(--border);
     background: var(--bg2);
     color: var(--muted);
@@ -99,6 +107,25 @@
     font-size: 1rem; transition: all 0.2s;
   }
   .theme-toggle:hover { color: var(--text); border-color: var(--mint); }
+
+  /* ── MOBILE NAV TOGGLE ── */
+  .nav-toggle {
+    display: none;
+    width: 44px; height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg2);
+    cursor: pointer;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 4px;
+  }
+  .nav-toggle span {
+    width: 18px; height: 2px; background: var(--text);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
   /* ── HERO ── */
   .hero {
@@ -596,9 +623,29 @@
     .workflow-canvas { max-width: 100%; margin: 0; }
     .about-grid { grid-template-columns: 1fr; }
     .about-visual { display: none; }
-    nav .nav-link { display: none; }
+    .nav-toggle { display: flex; }
+    nav .nav-right {
+      position: fixed; top: 64px; left: 0; right: 0;
+      flex-direction: column; align-items: flex-start; gap: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+    nav .nav-right.open { max-height: 320px; }
+    nav .nav-link {
+      display: block; width: 100%;
+      padding: 1rem clamp(1.5rem, 5vw, 4rem);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .theme-toggle { margin: 1rem clamp(1.5rem, 5vw, 4rem); }
     footer { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; }
+  }
+
+  @media (max-width: 420px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   /* ── REDUCED MOTION ── */
@@ -610,16 +657,21 @@
 <body>
 
 <!-- NAV -->
-<nav>
+<nav aria-label="Primary">
   <div class="nav-logo">Sabi<span>Stack</span></div>
-  <div class="nav-right">
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navRight">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-right" id="navRight">
     <a href="#products" class="nav-link">Blueprints</a>
     <a href="#stack" class="nav-link">Stack</a>
     <a href="#about" class="nav-link">About</a>
     <a href="#follow" class="nav-link">Follow</a>
-    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">🌙</button>
+    <button class="theme-toggle" id="themeBtn" aria-label="Switch to light mode">🌙</button>
   </div>
 </nav>
+
+<main>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -865,13 +917,16 @@
       <h2 class="section-title">Get new blueprints first.</h2>
       <p class="section-desc">Join the list. When a new workflow drops — enrichment engine, tracking setup, outreach pipeline — you hear about it before anyone else.</p>
       <form data-gumroad-follow="debayour01">
-        <input type="email" placeholder="your@email.com" required>
+        <label for="followEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="followEmail" name="email" placeholder="your@email.com" required>
         <button type="submit">Follow SabiStack</button>
       </form>
-      <p data-gumroad-follow-message="">✓ You're on the list. New blueprints come to you first.</p>
+      <p data-gumroad-follow-message=""></p>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -891,8 +946,46 @@
   const html = document.documentElement;
   btn.addEventListener('click', () => {
     const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    const newTheme = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
     btn.textContent = isDark ? '🌙' : '☀️';
+    btn.setAttribute('aria-label', `Switch to ${isDark ? 'dark' : 'light'} mode`);
+  });
+
+  // ── MOBILE NAV TOGGLE ──
+  const navToggle = document.getElementById('navToggle');
+  const navRight = document.getElementById('navRight');
+  navToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navRight.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+  navRight.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navRight.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+    });
+  });
+  // Close on click-outside, so the menu never gets stuck open
+  document.addEventListener('click', (e) => {
+    if (navRight.classList.contains('open') &&
+        !navRight.contains(e.target) &&
+        !navToggle.contains(e.target)) {
+      navRight.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+    }
+  });
+  // Close on Escape for keyboard users
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navRight.classList.contains('open')) {
+      navRight.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+      navToggle.focus();
+    }
   });
 
   // ── WORKFLOW ANIMATION ──
