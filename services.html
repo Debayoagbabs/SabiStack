@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — SabiStack</title>
+  <meta name="description" content="SabiStack offers workflow automation, lead generation systems, digital marketing, and shortlet marketing packages for businesses across Nigeria." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #0D1F3C;
+      --accent: #F5A623;
+      --accent2: #1A6EFF;
+      --bg: #F8F9FC;
+      --white: #FFFFFF;
+      --text: #1C2540;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+    }
+
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    nav {
+      background: var(--brand);
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; color: var(--white); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+    .hero {
+      background: var(--brand);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(245,166,35,0.15);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); color: var(--white); line-height: 1.15; max-width: 700px; margin: 0 auto 1.5rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 560px; margin: 0 auto; }
+
+    .section { padding: 5rem 2rem; max-width: 960px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.75rem; }
+    .section h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--brand); margin-bottom: 0.75rem; line-height: 1.2; }
+    .section > p { color: var(--muted); font-size: 1.05rem; margin-bottom: 2.5rem; max-width: 680px; }
+
+    /* SERVICE CARDS */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+    .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .service-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; color: var(--brand); margin-bottom: 0.75rem; }
+    .service-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.25rem; }
+    .service-includes { list-style: none; }
+    .service-includes li {
+      font-size: 0.88rem;
+      color: var(--text);
+      padding: 0.3rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .service-includes li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+    /* PACKAGES */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+      margin-top: 2rem;
+    }
+    .package-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 2px solid var(--border);
+      position: relative;
+    }
+    .package-card.featured { border-color: var(--accent); }
+    .package-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--brand);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .package-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; color: var(--brand); margin-bottom: 0.5rem; }
+    .package-price { font-size: 1.6rem; font-weight: 700; color: var(--brand); margin-bottom: 0.25rem; }
+    .package-price span { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+    .package-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .package-features { list-style: none; }
+    .package-features li { font-size: 0.88rem; color: var(--text); padding: 0.3rem 0; padding-left: 1.25rem; position: relative; }
+    .package-features li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+    .divider { height: 1px; background: var(--border); max-width: 960px; margin: 0 auto; }
+
+    .cta-section { background: var(--brand); padding: 5rem 2rem; text-align: center; }
+    .cta-section h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--white); margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+    .btn { display: inline-block; background: var(--accent); color: var(--brand); font-weight: 700; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; transition: opacity 0.2s; }
+    .btn:hover { opacity: 0.9; }
+
+    footer { background: #060F20; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) { .nav-links { gap: 1rem; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Sabi<span>Stack</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-eyebrow">What We Do</div>
+    <h1>Services That <span>Build & Scale</span> Your Business</h1>
+    <p>From lead generation to marketing automation and digital infrastructure — we build the systems that help Nigerian businesses grow consistently.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Core Services</div>
+    <h2>What SabiStack Delivers</h2>
+    <p>Every service we offer is designed to produce measurable business outcomes — more leads, more bookings, more revenue — with systems you can rely on long after our engagement ends.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Workflow Automation</h3>
+        <p>We design and build automated workflows that eliminate manual processes and connect your tools into a seamless operational system.</p>
+        <ul class="service-includes">
+          <li>n8n automation pipeline design and deployment</li>
+          <li>API integrations across your tool stack</li>
+          <li>Lead capture and CRM automation</li>
+          <li>Webhook-triggered workflows</li>
+          <li>Self-hosted automation infrastructure</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Lead Generation Systems</h3>
+        <p>We build end-to-end B2B lead generation pipelines that identify, enrich, and qualify prospects automatically — so your sales team focuses on closing, not prospecting.</p>
+        <ul class="service-includes">
+          <li>Clay-powered contact enrichment workflows</li>
+          <li>Cold outreach pipeline architecture</li>
+          <li>Email verification and deliverability setup</li>
+          <li>Lead scoring and qualification automation</li>
+          <li>CRM integration and pipeline tracking</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📣</div>
+        <h3>Digital Marketing</h3>
+        <p>We plan and manage paid and organic digital marketing campaigns that generate real business enquiries — not just impressions.</p>
+        <ul class="service-includes">
+          <li>Meta (Facebook & Instagram) Ads management</li>
+          <li>Google Ads search and display campaigns</li>
+          <li>Social media content and scheduling</li>
+          <li>WhatsApp Business API campaign setup</li>
+          <li>Analytics and conversion tracking (GA4 + GTM)</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🏨</div>
+        <h3>Shortlet Marketing Packages</h3>
+        <p>Specialised marketing setup for shortlet apartment owners — we build the full digital presence that turns your property into a consistently booked business.</p>
+        <ul class="service-includes">
+          <li>Airbnb, Booking.com & Hotels.ng listing setup</li>
+          <li>Instagram and Facebook page creation</li>
+          <li>Paid ads campaign launch</li>
+          <li>WhatsApp Business booking flow</li>
+          <li>Guest communication scripts and templates</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h3>Digital Infrastructure</h3>
+        <p>We set up and manage the technical foundation your digital operations need — from domain and email to cloud hosting and analytics.</p>
+        <ul class="service-includes">
+          <li>Professional domain and business email setup</li>
+          <li>Cloud server deployment (AWS EC2, Oracle Cloud)</li>
+          <li>Google Analytics GA4 and GTM implementation</li>
+          <li>CRM setup and configuration (Zoho, HubSpot)</li>
+          <li>Self-hosted tool deployment and maintenance</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>AI Data Annotation & Training</h3>
+        <p>We support AI training pipelines through high-quality data annotation and labelling work across text, image, and structured data formats.</p>
+        <ul class="service-includes">
+          <li>Text and document annotation</li>
+          <li>Receipt and structured data verification</li>
+          <li>AI output evaluation and quality assurance</li>
+          <li>Multi-platform annotation work</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Shortlet Marketing Packages</div>
+    <h2>Ready-to-Go Packages for Property Owners</h2>
+    <p>For shortlet and hospitality businesses, we offer structured packages with clear deliverables and transparent pricing.</p>
+
+    <div class="packages-grid">
+
+      <div class="package-card">
+        <h3>Shortlet Launch Package</h3>
+        <div class="package-price">₦100,000 <span>one-time</span></div>
+        <div class="package-desc">Everything you need to launch your shortlet apartment online and start receiving bookings.</div>
+        <ul class="package-features">
+          <li>Platform listings (Airbnb, Booking.com, Hotels.ng)</li>
+          <li>Instagram & Facebook page setup</li>
+          <li>9 launch posts designed and scheduled</li>
+          <li>Meta Ads campaign launch</li>
+          <li>WhatsApp Business setup and booking flow</li>
+          <li>Guest communication scripts</li>
+          <li>30-day performance review call</li>
+        </ul>
+      </div>
+
+      <div class="package-card featured">
+        <div class="package-badge">Most Popular</div>
+        <h3>Resort Marketing Proposal</h3>
+        <div class="package-price">₦450,000 <span>setup + ₦180k/month</span></div>
+        <div class="package-desc">Full-service digital marketing for hotels and resorts targeting leisure, corporate, and event markets.</div>
+        <ul class="package-features">
+          <li>Digital audit and strategy document</li>
+          <li>Google Business and booking platform setup</li>
+          <li>Social media overhaul across 3 platforms</li>
+          <li>Meta and Google Ads campaigns</li>
+          <li>Email and WhatsApp broadcast setup</li>
+          <li>PR and influencer brief</li>
+          <li>Monthly management and reporting</li>
+        </ul>
+      </div>
+
+      <div class="package-card">
+        <h3>Custom Engagement</h3>
+        <div class="package-price">Custom <span>pricing</span></div>
+        <div class="package-desc">For businesses with specific needs that don't fit a standard package — we scope and price custom engagements.</div>
+        <ul class="package-features">
+          <li>Discovery call to understand your needs</li>
+          <li>Scoped proposal with clear deliverables</li>
+          <li>Flexible setup and retainer structures</li>
+          <li>Nationwide service delivery</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Not Sure Which Service You Need?</h2>
+    <p>Book a free 20-minute discovery call and we'll identify exactly what your business needs.</p>
+    <a href="contact.html" class="btn">Book a Discovery Call</a>
+  </div>
+
+  <footer>
+    <p>© 2025 SabiStack — Lagos, Nigeria &nbsp;|&nbsp; <a href="mailto:hello@trysabistack.com">hello@trysabistack.com</a></p>
+  </footer>
+
+</body>
+</html>
