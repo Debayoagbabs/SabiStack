@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SabiStack — Marketing Engineering for DTC Brands | Joseph Agbabiaka</title>
 <meta name="description" content="Server-side tracking, clean attribution and agent-monitored performance for DTC brands spending $10k–$50k/month on ads. Marketing engineering by SabiStack.">
-<meta name="keywords" content="n8n automation, workflow automation, lead enrichment, API integration, business automation blueprints, SabiStack">
+<meta name="keywords" content="server-side tracking, Meta Conversions API, GA4 attribution, server-side GTM, Shopify tracking audit, marketing engineering, DTC ad tracking, SabiStack">
 <meta name="author" content="Joseph Agbabiaka">
 <meta name="theme-color" content="#0D1117" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#F0F4F8" media="(prefers-color-scheme: light)">
@@ -589,7 +589,7 @@
     font-weight: 700; font-size: 0.95rem;
   }
   .footer-brand span { color: var(--mint); }
-  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
   .footer-link {
     font-size: 0.8rem; color: var(--muted);
     transition: color 0.2s;
@@ -808,10 +808,27 @@
     min-height: 1.2em;
   }
   .audit-status.error { color: var(--orange); }
+  .audit-alt { font-size: 0.8rem; color: var(--muted); text-align: center; }
+  .audit-alt a { color: var(--mint); }
+  .audit-alt a:hover { text-decoration: underline; }
 
+  .proof-checks {
+    margin-top: 1.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+  }
+  .proof-check-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem 2rem; }
   @media (max-width: 860px) {
+    .proof-check-list { grid-template-columns: 1fr; }
     .proof-grid, .audit-grid { grid-template-columns: 1fr; }
     .audit-grid { gap: 2.5rem; }
+  }
+  @media (max-width: 768px) {
+    .workflow-canvas { aspect-ratio: auto; height: 420px; }
+    .wf-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+    .wf-node { padding: 6px 10px; }
   }
   @media (max-width: 560px) {
     .proof-tiles { grid-template-columns: 1fr; }
@@ -1014,6 +1031,17 @@
         <p class="svc-desc">Case studies get published with raw counts as each test completes.</p>
       </div>
     </div>
+
+    <div class="proof-checks">
+      <h3 class="svc-title">Where else tracking leaks</h3>
+      <p class="svc-desc">The thank-you page is only one place. A tracking audit also checks these, because they sit outside the standard checkout flow:</p>
+      <ul class="svc-list proof-check-list">
+        <li><span class="svc-check">✓</span> Custom /pages/ advertorials and landing pages that skip the standard theme events</li>
+        <li><span class="svc-check">✓</span> Bundle builders and cart drawers that add items without firing AddToCart</li>
+        <li><span class="svc-check">✓</span> ViewContent and AddToCart payloads missing value, currency or content IDs</li>
+        <li><span class="svc-check">✓</span> Thank-you page reloads and back-button replays that fire Purchase twice</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -1039,23 +1067,6 @@
           <div class="card-footer">
             <div class="card-price">From $49</div>
             <div class="card-link">Get it →</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Product 2 — placeholder for future product -->
-      <a class="product-card" href="https://debayour01.gumroad.com" target="_blank">
-        <div class="card-thumb">
-          <div class="card-thumb-icon">🔗</div>
-          <div class="card-thumb-badge orange">Coming Soon</div>
-        </div>
-        <div class="card-body">
-          <div class="card-tag">n8n · Webhook · API</div>
-          <div class="card-title">API Integration Starter Kit</div>
-          <p class="card-desc">Pre-wired n8n templates for common business API integrations — authentication, pagination, error handling, and rate limiting built in from day one.</p>
-          <div class="card-footer">
-            <div class="card-price">In Development</div>
-            <div class="card-link">See storefront →</div>
           </div>
         </div>
       </a>
@@ -1206,6 +1217,7 @@
           </div>
           <button type="submit" class="btn-primary audit-submit">Request Audit →</button>
           <p id="auditStatus" class="audit-status" role="status" aria-live="polite"></p>
+          <p class="audit-alt">Prefer email? Write to <a href="mailto:joseph@trysabistack.com">joseph@trysabistack.com</a></p>
         </form>
       </div>
     </div>
