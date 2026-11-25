@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SabiStack — Automation Blueprints by Joseph Agbabiaka</title>
-<meta name="description" content="Production-ready n8n automation blueprints by Joseph Agbabiaka — Digital Systems Architect in Lagos, Nigeria.">
+<title>SabiStack — Marketing Engineering for DTC Brands | Joseph Agbabiaka</title>
+<meta name="description" content="Server-side tracking, clean attribution and agent-monitored performance for DTC brands spending $10k–$50k/month on ads. Marketing engineering by SabiStack.">
 <meta name="keywords" content="n8n automation, workflow automation, lead enrichment, API integration, business automation blueprints, SabiStack">
 <meta name="author" content="Joseph Agbabiaka">
 <meta name="theme-color" content="#0D1117" media="(prefers-color-scheme: dark)">
@@ -13,15 +13,15 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="SabiStack — Automation Blueprints by Joseph Agbabiaka">
-<meta property="og:description" content="Production-ready n8n automation blueprints. Zero-bloat lead enrichment, API integration, and workflow automation infrastructure, built and run in production.">
+<meta property="og:title" content="SabiStack — Marketing Engineering for DTC Brands | Joseph Agbabiaka">
+<meta property="og:description" content="Server-side tracking, clean attribution and agent-monitored performance for DTC brands spending $10k–$50k/month on ads. Marketing engineering by SabiStack.">
 <meta property="og:image" content="https://trysabistack.com/og-image.png">
 <meta property="og:url" content="https://trysabistack.com">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SabiStack — Automation Blueprints by Joseph Agbabiaka">
-<meta name="twitter:description" content="Production-ready n8n automation blueprints. Zero-bloat lead enrichment, API integration, and workflow automation infrastructure, built and run in production.">
+<meta name="twitter:title" content="SabiStack — Marketing Engineering for DTC Brands | Joseph Agbabiaka">
+<meta name="twitter:description" content="Server-side tracking, clean attribution and agent-monitored performance for DTC brands spending $10k–$50k/month on ads. Marketing engineering by SabiStack.">
 <meta name="twitter:image" content="https://trysabistack.com/og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -632,7 +632,7 @@
       max-height: 0; overflow: hidden;
       transition: max-height 0.25s ease;
     }
-    nav .nav-right.open { max-height: 320px; }
+    nav .nav-right.open { max-height: 440px; }
     nav .nav-link {
       display: block; width: 100%;
       padding: 1rem clamp(1.5rem, 5vw, 4rem);
@@ -652,6 +652,171 @@
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
   }
+
+  /* ── SERVICES ── */
+  .services-section { background: var(--bg2); border-top: 1px solid var(--border); }
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .svc-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  }
+  .svc-card:hover { transform: translateY(-4px); border-color: var(--mint); box-shadow: var(--card-shadow); }
+  .svc-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--mint-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 1rem;
+  }
+  .svc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .svc-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+  .svc-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .svc-list li { font-size: 0.85rem; display: flex; gap: 0.5rem; align-items: flex-start; }
+  .svc-check { color: var(--mint); flex-shrink: 0; }
+  .svc-cta {
+    margin-top: 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .svc-cta p { color: var(--muted); font-size: 0.95rem; }
+
+  /* ── PROOF ── */
+  .proof-section { background: var(--bg); }
+  .proof-grid {
+    display: grid; grid-template-columns: 1.6fr 1fr;
+    gap: 1.5rem; align-items: stretch;
+  }
+  .proof-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+  }
+  .proof-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; color: var(--mint);
+    background: var(--mint-dim);
+    padding: 4px 10px; border-radius: 99px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 1.25rem;
+  }
+  .proof-badge.orange { color: var(--orange); background: var(--orange-dim); }
+  .proof-tiles {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .proof-tile {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem;
+  }
+  .proof-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1.6rem;
+    color: var(--mint); line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .proof-val.orange { color: var(--orange); }
+  .proof-lbl { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+  .proof-fix { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+  .proof-fix strong { color: var(--text); }
+  .proof-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--muted);
+    padding-top: 1rem; border-top: 1px solid var(--border);
+  }
+
+  /* ── AUDIT / LEAD CAPTURE ── */
+  .audit-section {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .audit-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start;
+  }
+  .audit-text .section-desc { margin-bottom: 1.75rem; }
+  .audit-points { display: flex; flex-direction: column; gap: 0.75rem; }
+  .audit-point {
+    font-size: 0.875rem; color: var(--muted);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .audit-point-icon {
+    color: var(--mint); font-weight: 700;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--mint-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; flex-shrink: 0;
+  }
+  .audit-form-wrap {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+  }
+  .audit-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .form-row { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-row label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .form-row input, .form-row textarea, .form-row select {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    resize: vertical;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  .form-row input:focus, .form-row textarea:focus, .form-row select:focus { border-color: var(--mint); }
+  .form-row input::placeholder, .form-row textarea::placeholder { color: var(--muted); }
+  .audit-submit {
+    justify-content: center;
+    border: none; cursor: pointer;
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+  }
+  .audit-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .audit-status {
+    font-size: 0.8rem; text-align: center;
+    color: var(--mint);
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 1.2em;
+  }
+  .audit-status.error { color: var(--orange); }
+
+  @media (max-width: 860px) {
+    .proof-grid, .audit-grid { grid-template-columns: 1fr; }
+    .audit-grid { gap: 2.5rem; }
+  }
+  @media (max-width: 560px) {
+    .proof-tiles { grid-template-columns: 1fr; }
+    .svc-cta { flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -662,13 +827,14 @@
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navRight">
     <span></span><span></span><span></span>
   </button>
- <div class="nav-right" id="navRight">
-  <a href="index.html" class="nav-link">Home</a>
-  <a href="about.html" class="nav-link">About</a>
-  <a href="services.html" class="nav-link">Services</a>
-  <a href="contact.html" class="nav-link">Contact</a>
-  <button class="theme-toggle" id="themeBtn" aria-label="Switch to light mode">🌙</button>
-</div>
+  <div class="nav-right" id="navRight">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#proof" class="nav-link">Proof</a>
+    <a href="#products" class="nav-link">Blueprints</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#audit" class="nav-link">Contact</a>
+    <button class="theme-toggle" id="themeBtn" aria-label="Switch to light mode">🌙</button>
+  </div>
 </nav>
 
 <main>
@@ -677,40 +843,40 @@
 <section class="hero" id="home">
   <div class="hero-grid">
     <div class="hero-text">
-      <div class="hero-eyebrow">SabiStack · Automation Blueprints</div>
+      <div class="hero-eyebrow">SabiStack · Marketing Engineering</div>
       <h1 class="hero-title">
-        Build pipelines that run<br>
-        while you <em>sleep.</em>
+        Know which ad dollars<br>
+        actually <em>work.</em>
       </h1>
       <p class="hero-desc">
-        Production-ready automation blueprints engineered by Joseph Agbabiaka — Digital Systems Architect based in Lagos. Zero bloat. Zero manual overhead. Just clean, sovereign infrastructure that works.
+        SabiStack engineers the measurement layer behind paid growth: server-side tracking, clean attribution, and automated performance monitoring for DTC brands spending $10k–$50k a month on Meta and Google.
       </p>
       <div class="hero-cta">
-        <a href="#products" class="btn-primary">
-          Browse Blueprints →
+        <a href="#audit" class="btn-primary">
+          Request a Tracking Audit →
         </a>
-        <a href="https://debayour01.gumroad.com" target="_blank" class="btn-ghost">
-          Gumroad Store ↗
+        <a href="#proof" class="btn-ghost">
+          See the Lab Test
         </a>
       </div>
     </div>
 
-    <!-- ANIMATED WORKFLOW -->
-    <div class="workflow-canvas">
+    <!-- ANIMATED PIPELINE -->
+    <div class="workflow-canvas" role="img" aria-label="Animated diagram: a checkout event flows through server-side GTM, order ID deduplication, Meta and GA4, then a Slack audit log.">
       <div class="wf-bg">
         <div class="wf-grid"></div>
         <div class="wf-header">
           <div class="wf-dot red"></div>
           <div class="wf-dot yellow"></div>
           <div class="wf-dot green"></div>
-          <span class="wf-label">sovereign-lead-engine · execution #1</span>
+          <span class="wf-label">tracking-pipeline · lab test · dev store</span>
         </div>
         <div class="wf-nodes" id="wfNodes">
           <div class="wf-row">
             <div class="wf-node" id="n1">
-              <div class="node-icon">⚡</div>
+              <div class="node-icon">🛒</div>
               <div class="node-info">
-                <div class="node-name">Webhook Trigger</div>
+                <div class="node-name">Checkout event</div>
                 <div class="node-status" id="s1">waiting...</div>
               </div>
               <div class="node-check">✓</div>
@@ -719,9 +885,9 @@
           <div class="wf-connector" id="c1"></div>
           <div class="wf-row">
             <div class="wf-node" id="n2">
-              <div class="node-icon">🔍</div>
+              <div class="node-icon">🧩</div>
               <div class="node-info">
-                <div class="node-name">DeFiLlama · filter TVL</div>
+                <div class="node-name">Server-side GTM</div>
                 <div class="node-status" id="s2">idle</div>
               </div>
               <div class="node-check">✓</div>
@@ -732,7 +898,7 @@
             <div class="wf-node" id="n3">
               <div class="node-icon orange-bg">🔄</div>
               <div class="node-info">
-                <div class="node-name">Deduplication check</div>
+                <div class="node-name">Dedup on order_id</div>
                 <div class="node-status" id="s3">idle</div>
               </div>
               <div class="node-check">✓</div>
@@ -741,9 +907,9 @@
           <div class="wf-connector" id="c3"></div>
           <div class="wf-row">
             <div class="wf-node" id="n4">
-              <div class="node-icon">💧</div>
+              <div class="node-icon">📡</div>
               <div class="node-info">
-                <div class="node-name">Waterfall enrichment</div>
+                <div class="node-name">Meta CAPI + GA4</div>
                 <div class="node-status" id="s4">idle</div>
               </div>
               <div class="node-check">✓</div>
@@ -752,9 +918,9 @@
           <div class="wf-connector" id="c4"></div>
           <div class="wf-row">
             <div class="wf-node" id="n5">
-              <div class="node-icon">📊</div>
+              <div class="node-icon">💬</div>
               <div class="node-info">
-                <div class="node-name">Write to destination</div>
+                <div class="node-name">Slack audit log</div>
                 <div class="node-status" id="s5">idle</div>
               </div>
               <div class="node-check">✓</div>
@@ -766,17 +932,102 @@
   </div>
 </section>
 
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-inner">
+    <div class="section-eyebrow">// what I engineer</div>
+    <h2 class="section-title">Three layers, one measurable system</h2>
+    <p class="section-desc">Most ad accounts leak money in the plumbing: double-counted conversions, missing orders, and dashboards nobody checks until the month closes. I fix the plumbing, then keep watching it.</p>
+
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🎯</div>
+        <h3 class="svc-title">Measurement integrity</h3>
+        <p class="svc-desc">Server-side GTM, GA4 and the Meta Conversions API wired so every order is counted once, in every platform.</p>
+        <ul class="svc-list">
+          <li><span class="svc-check">✓</span> Server-side GTM container</li>
+          <li><span class="svc-check">✓</span> Event deduplication on order_id</li>
+          <li><span class="svc-check">✓</span> Meta Event Match Quality tuning</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📡</div>
+        <h3 class="svc-title">Performance visibility</h3>
+        <p class="svc-desc">Automated monitoring that watches spend and tracking health, flags anomalies, and leaves an audit trail in Slack.</p>
+        <ul class="svc-list">
+          <li><span class="svc-check">✓</span> n8n and Make workflows</li>
+          <li><span class="svc-check">✓</span> Claude / OpenAI decision layer with guardrails</li>
+          <li><span class="svc-check">✓</span> Read-only Google Ads (MCC) access</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⚡</div>
+        <h3 class="svc-title">Acquisition systems</h3>
+        <p class="svc-desc">Lead-generation pipelines that find, enrich and sequence prospects without manual list-building.</p>
+        <ul class="svc-list">
+          <li><span class="svc-check">✓</span> Waterfall contact enrichment</li>
+          <li><span class="svc-check">✓</span> Deduplicated output to Sheets or CRM</li>
+          <li><span class="svc-check">✓</span> Cold-outreach workflows</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="svc-cta">
+      <p>The starting point is a tracking audit of your Meta, GA4 and Google Ads setup.</p>
+      <a href="#audit" class="btn-primary">Request a Tracking Audit →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof-section" id="proof">
+  <div class="section-inner">
+    <div class="section-eyebrow">// proof</div>
+    <h2 class="section-title">Lab test: the double-count problem</h2>
+    <p class="section-desc">I built a Shopify dev store wired to server-side GTM, GA4 and the Meta Conversions API, then ran test orders through it. This is a controlled lab test, not client data.</p>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-badge">Controlled Test on Shopify Dev Store (Lab Test) · 20 orders</div>
+        <div class="proof-tiles">
+          <div class="proof-tile">
+            <div class="proof-val orange">5 of 20</div>
+            <div class="proof-lbl">orders double-fired on Meta before the fix (thank-you page reload)</div>
+          </div>
+          <div class="proof-tile">
+            <div class="proof-val orange">3 of 20</div>
+            <div class="proof-lbl">orders never reached GA4</div>
+          </div>
+          <div class="proof-tile">
+            <div class="proof-val">0 of 20</div>
+            <div class="proof-lbl">duplicates after the fix, with Meta EMQ at 8.8 / 10</div>
+          </div>
+        </div>
+        <p class="proof-fix"><strong>The fix:</strong> pass order_id as the event_id on both the browser and server events, and route the orders/paid webhook server-side, so Meta can deduplicate the two.</p>
+        <p class="proof-note">20-order sample on a dev store. Raw counts shown; not a claim about any client's results.</p>
+      </div>
+
+      <div class="proof-card proof-side">
+        <div class="proof-badge orange">Live lab</div>
+        <h3 class="svc-title">A real B2B lead-gen funnel</h3>
+        <p class="svc-desc">The same stack runs against a live lead-generation funnel: read-only Google Ads access, server-side GTM, GA4, a Meta CAPI test gateway, and n8n and Make workflows with an AI decision layer and a Slack audit log.</p>
+        <p class="svc-desc">Case studies get published with raw counts as each test completes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRODUCTS -->
 <section class="products-section" id="products">
   <div class="section-inner">
     <div class="section-eyebrow">// blueprints</div>
-    <h2 class="section-title">Ready-to-deploy automation</h2>
-    <p class="section-desc">Each blueprint ships with the workflow JSON, a setup guide, and configuration files — install, connect your credentials, and run. One is live; more are in active development.</p>
+    <h2 class="section-title">Packaged systems you can deploy yourself</h2>
+    <p class="section-desc">Prefer to install it yourself? Each blueprint ships with the workflow JSON, a setup guide, and configuration files: install, connect your credentials, and run. One is live; more are in development.</p>
 
     <div class="products-grid">
 
       <!-- Product 1 -->
-      <a class="product-card gumroad-button" href="https://debayour01.gumroad.com/l/sovereign-lead-engine">
+      <a class="product-card gumroad-button" href="https://debayour01.gumroad.com/l/sovereign-lead-engine" data-gumroad-single-product="true">
         <div class="card-thumb">
           <div class="card-thumb-icon">⚡</div>
           <div class="card-thumb-badge">Flagship</div>
@@ -786,7 +1037,7 @@
           <div class="card-title">Sovereign Lead Enrichment Engine</div>
           <p class="card-desc">A zero-bloat lead pipeline: pulls prospects from DeFiLlama, deduplicates, and runs waterfall enrichment across Hunter → Apollo → Prospeo to deliver clean, ready-to-use output. Fully autonomous — no manual list-cleaning required.</p>
           <div class="card-footer">
-            <div class="card-price">View Blueprint</div>
+            <div class="card-price">From $49</div>
             <div class="card-link">Get it →</div>
           </div>
         </div>
@@ -835,16 +1086,18 @@
   <div class="section-inner">
     <div class="section-eyebrow">// tech stack</div>
     <h2 class="section-title">Built with tools that ship</h2>
-    <p class="section-desc">Every blueprint is built on production-grade tooling. No SaaS lock-in. No black boxes. Full control over your infrastructure.</p>
+    <p class="section-desc">Production-grade tooling you can inspect. No black boxes, and you keep ownership of the infrastructure.</p>
     <div class="stack-grid">
-      <div class="stack-item"><div class="stack-icon">🔄</div><div class="stack-name">n8n</div><div class="stack-role">Workflow orchestration</div></div>
-      <div class="stack-item"><div class="stack-icon">🧪</div><div class="stack-name">Clay</div><div class="stack-role">Lead enrichment</div></div>
-      <div class="stack-item"><div class="stack-icon">📡</div><div class="stack-name">DeFiLlama</div><div class="stack-role">Protocol data source</div></div>
-      <div class="stack-item"><div class="stack-icon">🔍</div><div class="stack-name">Hunter.io</div><div class="stack-role">Email discovery</div></div>
-      <div class="stack-item"><div class="stack-icon">🚀</div><div class="stack-name">Apollo</div><div class="stack-role">Contact enrichment</div></div>
-      <div class="stack-item"><div class="stack-icon">🎯</div><div class="stack-name">Google GTM</div><div class="stack-role">Tracking infrastructure</div></div>
+      <div class="stack-item"><div class="stack-icon">🧩</div><div class="stack-name">Server-side GTM</div><div class="stack-role">Tracking infrastructure</div></div>
       <div class="stack-item"><div class="stack-icon">📈</div><div class="stack-name">GA4</div><div class="stack-role">Analytics & attribution</div></div>
-      <div class="stack-item"><div class="stack-icon">🗄️</div><div class="stack-name">Google Sheets</div><div class="stack-role">Output destination</div></div>
+      <div class="stack-item"><div class="stack-icon">📡</div><div class="stack-name">Meta CAPI</div><div class="stack-role">Conversion signal</div></div>
+      <div class="stack-item"><div class="stack-icon">🎯</div><div class="stack-name">Google Ads</div><div class="stack-role">Read-only monitoring</div></div>
+      <div class="stack-item"><div class="stack-icon">🛍️</div><div class="stack-name">Shopify</div><div class="stack-role">Order source</div></div>
+      <div class="stack-item"><div class="stack-icon">🔄</div><div class="stack-name">n8n</div><div class="stack-role">Workflow orchestration</div></div>
+      <div class="stack-item"><div class="stack-icon">⚙️</div><div class="stack-name">Make</div><div class="stack-role">Workflow orchestration</div></div>
+      <div class="stack-item"><div class="stack-icon">🧠</div><div class="stack-name">Claude / OpenAI</div><div class="stack-role">Decision layer</div></div>
+      <div class="stack-item"><div class="stack-icon">💬</div><div class="stack-name">Slack</div><div class="stack-role">Audit log</div></div>
+      <div class="stack-item"><div class="stack-icon">🧪</div><div class="stack-name">Clay</div><div class="stack-role">Lead enrichment</div></div>
     </div>
   </div>
 </section>
@@ -857,19 +1110,19 @@
         <div class="section-eyebrow">// about</div>
         <h2 class="section-title">I build what I sell.</h2>
         <p class="section-desc">
-          I'm Joseph Agbabiaka — Digital Systems Architect and Workflow Automation Specialist based in Lagos, Nigeria. Every blueprint I publish is infrastructure I've built and run in production. No theory. No demos. Just working systems.
+          I'm Joseph Agbabiaka, a marketing engineer and Digital Systems Architect based in Lagos, Nigeria. I sit between the ad platforms and the data, making sure the numbers behind your spend are right and the systems around them run without babysitting.
         </p>
         <p class="section-desc">
-          I specialize in decoupling business operations from manual overhead — building autonomous pipelines that handle lead generation, data enrichment, conversion tracking, and outreach without human intervention at each step.
+          I test everything in a lab first, on a Shopify dev store and a live B2B lead-gen funnel, and I publish the raw counts, not just the wins.
         </p>
         <div class="about-pills">
-          <span class="pill">workflow architecture</span>
-          <span class="pill">API integration</span>
-          <span class="pill">lead enrichment</span>
+          <span class="pill">server-side tracking</span>
           <span class="pill">GTM / GA4</span>
-          <span class="pill">n8n</span>
-          <span class="pill">AI evaluation</span>
-          <span class="pill">process automation</span>
+          <span class="pill">Meta CAPI</span>
+          <span class="pill">attribution</span>
+          <span class="pill">n8n / Make</span>
+          <span class="pill">AI agents</span>
+          <span class="pill">lead enrichment</span>
           <span class="pill">Lagos · Nigeria</span>
         </div>
         <div class="about-stat-row">
@@ -878,12 +1131,12 @@
             <div class="about-stat-lbl">Years automating</div>
           </div>
           <div class="about-stat">
-            <div class="about-stat-val">0</div>
-            <div class="about-stat-lbl">Manual steps in pipeline</div>
+            <div class="about-stat-val">0 of 20</div>
+            <div class="about-stat-lbl">Duplicate events after fix (lab test)</div>
           </div>
           <div class="about-stat">
-            <div class="about-stat-val">∞</div>
-            <div class="about-stat-lbl">Scale ceiling</div>
+            <div class="about-stat-val">8.8/10</div>
+            <div class="about-stat-lbl">Meta EMQ after fix (lab test)</div>
           </div>
         </div>
       </div>
@@ -894,16 +1147,66 @@
           <div class="t-dot" style="background:#28CA41"></div>
         </div>
         <div class="terminal-body">
-          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">node pipeline.js --env prod</span></div>
-          <div class="t-line"><span class="t-output">✓ Webhook trigger registered</span></div>
-          <div class="t-line"><span class="t-output">✓ DeFiLlama filter: TVL > $10M</span></div>
-          <div class="t-line"><span class="t-output">✓ Dedup check: 14 skipped</span></div>
-          <div class="t-line"><span class="t-output">✓ Hunter: 38 verified emails</span></div>
-          <div class="t-line"><span class="t-output">✓ Apollo fallback: 9 found</span></div>
-          <div class="t-line"><span class="t-orange">→ Writing 47 records to sheet...</span></div>
-          <div class="t-line"><span class="t-output">✓ Pipeline complete. 0 errors.</span></div>
+          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">audit --store dev-store --orders 20</span></div>
+          <div class="t-line"><span class="t-output">✓ Server-side GTM container reachable</span></div>
+          <div class="t-line"><span class="t-orange">✗ Meta: 5 of 20 orders double-fired</span></div>
+          <div class="t-line"><span class="t-orange">✗ GA4: 3 of 20 orders missed</span></div>
+          <div class="t-line"><span class="t-orange">→ Applying order_id as event_id...</span></div>
+          <div class="t-line"><span class="t-output">✓ Meta duplicates: 0 of 20</span></div>
+          <div class="t-line"><span class="t-output">✓ Meta EMQ: 8.8 / 10</span></div>
+          <div class="t-line"><span class="t-output"># lab test · dev store</span></div>
           <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd t-comment">█</span></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIT / LEAD CAPTURE -->
+<section class="audit-section" id="audit">
+  <div class="section-inner">
+    <div class="audit-grid">
+      <div class="audit-text">
+        <div class="section-eyebrow">// work with me</div>
+        <h2 class="section-title">Request a tracking audit.</h2>
+        <p class="section-desc">Share your store and what looks off in your numbers. I'll check your Meta, GA4 and Google Ads setup and send back where conversions are being double-counted or lost.</p>
+        <div class="audit-points">
+          <div class="audit-point"><span class="audit-point-icon">✓</span> Built for DTC brands spending $10k–$50k a month on ads</div>
+          <div class="audit-point"><span class="audit-point-icon">✓</span> Specific findings, not a generic pitch deck</div>
+          <div class="audit-point"><span class="audit-point-icon">✓</span> I read and reply to every request personally</div>
+        </div>
+      </div>
+      <div class="audit-form-wrap">
+        <form id="auditForm" class="audit-form">
+          <div class="form-row">
+            <label for="auditName">Name</label>
+            <input type="text" id="auditName" name="name" placeholder="Your name" autocomplete="name" required>
+          </div>
+          <div class="form-row">
+            <label for="auditEmail">Work email</label>
+            <input type="email" id="auditEmail" name="email" placeholder="you@brand.com" autocomplete="email" required>
+          </div>
+          <div class="form-row">
+            <label for="auditStore">Store URL</label>
+            <input type="url" id="auditStore" name="store" placeholder="https://yourbrand.com">
+          </div>
+          <div class="form-row">
+            <label for="auditSpend">Monthly ad spend</label>
+            <select id="auditSpend" name="spend">
+              <option value="">Select a range</option>
+              <option>Under $10k / month</option>
+              <option>$10k – $50k / month</option>
+              <option>Over $50k / month</option>
+              <option>Not running ads yet</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="auditGoal">What looks off in your numbers?</label>
+            <textarea id="auditGoal" name="goal" rows="3" placeholder="e.g. Meta reports more purchases than Shopify does"></textarea>
+          </div>
+          <button type="submit" class="btn-primary audit-submit">Request Audit →</button>
+          <p id="auditStatus" class="audit-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </div>
@@ -936,6 +1239,7 @@
     <a href="https://twitter.com/debayour01" target="_blank" class="footer-link">X / Twitter</a>
     <a href="https://linkedin.com/in/joseph-a-870ba83a3" target="_blank" class="footer-link">LinkedIn</a>
     <a href="#products" class="footer-link">Blueprints</a>
+    <a href="#audit" class="footer-link">Request Audit</a>
   </div>
   <div class="footer-copy">© 2026 SabiStack · Lagos, Nigeria</div>
 </footer>
@@ -990,11 +1294,11 @@
 
   // ── WORKFLOW ANIMATION ──
   const nodes = [
-    { node: 'n1', conn: 'c1', status: 's1', label: 'firing...', done: '12 records in' },
-    { node: 'n2', conn: 'c2', status: 's2', label: 'filtering TVL...', done: '47 protocols matched' },
-    { node: 'n3', conn: 'c3', status: 's3', label: 'checking dupes...', done: '14 skipped' },
-    { node: 'n4', conn: 'c4', status: 's4', label: 'enriching...', done: '47 emails found' },
-    { node: 'n5', conn: null, status: 's5', label: 'writing output...', done: '47 rows written ✓' },
+    { node: 'n1', conn: 'c1', status: 's1', label: 'firing...',        done: '20 orders in' },
+    { node: 'n2', conn: 'c2', status: 's2', label: 'routing...',       done: 'events forwarded' },
+    { node: 'n3', conn: 'c3', status: 's3', label: 'matching IDs...',  done: '5 duplicates blocked' },
+    { node: 'n4', conn: 'c4', status: 's4', label: 'sending...',       done: 'events delivered' },
+    { node: 'n5', conn: null, status: 's5', label: 'logging...',       done: 'audit posted ✓' },
   ];
 
   function runAnimation() {
@@ -1038,6 +1342,62 @@
 
   // Start after brief delay
   setTimeout(runAnimation, 1200);
+
+  // ── AUDIT LEAD FORM ──
+  // Set AUDIT_FORM_ENDPOINT to an n8n webhook (or Formspree etc.) URL to post leads there.
+  // While it is empty, submitting opens a pre-filled email to joseph@trysabistack.com instead.
+  const AUDIT_FORM_ENDPOINT = ''; // e.g. 'https://your-n8n-instance.com/webhook/sabistack-audit'
+  const AUDIT_EMAIL = 'joseph@trysabistack.com';
+  const auditForm = document.getElementById('auditForm');
+  const auditStatus = document.getElementById('auditStatus');
+
+  auditForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = auditForm.querySelector('.audit-submit');
+    const data = {
+      name: document.getElementById('auditName').value.trim(),
+      email: document.getElementById('auditEmail').value.trim(),
+      store: document.getElementById('auditStore').value.trim(),
+      spend: document.getElementById('auditSpend').value,
+      goal: document.getElementById('auditGoal').value.trim(),
+      source: 'trysabistack.com'
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    auditStatus.textContent = '';
+    auditStatus.classList.remove('error');
+
+    if (!AUDIT_FORM_ENDPOINT) {
+      const subject = encodeURIComponent('Tracking audit request — ' + (data.store || data.name));
+      const body = encodeURIComponent(
+        'Name: ' + data.name + '\nEmail: ' + data.email + '\nStore: ' + data.store +
+        '\nMonthly ad spend: ' + data.spend + '\n\nWhat looks off:\n' + data.goal
+      );
+      window.location.href = 'mailto:' + AUDIT_EMAIL + '?subject=' + subject + '&body=' + body;
+      auditStatus.textContent = 'Opening your email app to send this. If nothing opens, email ' + AUDIT_EMAIL + '.';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request Audit →';
+      return;
+    }
+
+    try {
+      const res = await fetch(AUDIT_FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error('Request failed');
+      auditForm.reset();
+      auditStatus.textContent = '✓ Got it. I\'ll reply personally.';
+    } catch (err) {
+      auditStatus.textContent = 'Something went wrong. Please email ' + AUDIT_EMAIL + ' directly.';
+      auditStatus.classList.add('error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request Audit →';
+    }
+  });
 
   // ── SMOOTH SCROLL ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
